@@ -1,0 +1,7 @@
+Running: xsim.dir/SIM_VOLK_time_impl/xsimk.exe -simmode gui -wdb SIM_VOLK_time_impl.wdb -simrunnum 0 -socket 50278
+Design successfully loaded
+Design Loading Memory Usage: 6600 KB (Peak: 6600 KB)
+Design Loading CPU Usage: 62 ms
+Simulation completed
+Simulation Memory Usage: 7268 KB (Peak: 7268 KB)
+Simulation CPU Usage: 93 ms
