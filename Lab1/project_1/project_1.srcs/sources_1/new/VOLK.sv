@@ -1,10 +1,10 @@
 `timescale 1ns / 1ps
 
 module VOLK(
-    input logic A,
-    input logic B,
-    input logic C,
-    input logic D,
+    input A,
+    input B,
+    input C,
+    input D,
     output logic X
 );
 
