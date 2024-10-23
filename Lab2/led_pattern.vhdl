@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 entity led_pattern is
     Port (
@@ -9,25 +10,25 @@ entity led_pattern is
 end led_pattern;
 
 architecture Behavioral of led_pattern is
-    type led_array is array(0 to 15) of STD_LOGIC_VECTOR(15 downto 0);
-    constant patterns : led_array := (
-        "0000000000000000",  -- 0
-        "0000000000000001",  -- 1
-        "0000000000000010",  -- 2
-        "0000000000000101",  -- 3
-        "0000000000001010",  -- 4
-        "0000000000101010",  -- 5
-        "0000000001010101",  -- 6
-        "0000000010101010",  -- 7
-        "0000000101010101",  -- 8
-        "0000001010101010",  -- 9
-        "0000010101010101",  -- 10
-        "0000101010101010",  -- 11
-        "0001010101010101",  -- 12
-        "0010101010101010",  -- 13
-        "0101010101010101",  -- 14
-        "1010101010101010"   -- 15
-    );
 begin
-    leds <= patterns(to_integer(unsigned(index)));
+    process(index)
+        variable pattern : STD_LOGIC_VECTOR(15 downto 0);
+        variable idx_int : integer;
+    begin
+        idx_int := to_integer(unsigned(index));
+        pattern := (others => '0');
+
+        if idx_int = 0 then
+            pattern := (others => '0');
+        else
+            for i in 0 to idx_int - 1 loop
+                if ((idx_int mod 2 = 0) and (i mod 2 = 1)) or
+                   ((idx_int mod 2 = 1) and (i mod 2 = 0)) then
+                    pattern(i) := '1';
+                end if;
+            end loop;
+        end if;
+
+        leds <= pattern;
+    end process;
 end Behavioral;
