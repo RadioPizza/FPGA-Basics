@@ -12,7 +12,7 @@ entity top_module is
 end top_module;
 
 architecture Behavioral of top_module is
-    signal index_signal : STD_LOGIC_VECTOR(3 downto 0);
+    signal index_signal : STD_LOGIC_VECTOR(4 downto 0);
 begin
     U1: entity work.led_controller
         Port map (

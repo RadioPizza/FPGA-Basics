@@ -7,14 +7,14 @@ entity led_controller is
         clk     : in  STD_LOGIC;
         reset   : in  STD_LOGIC;
         pause   : in  STD_LOGIC;
-        combination_index   : out STD_LOGIC_VECTOR (3 downto 0)
+        combination_index   : out STD_LOGIC_VECTOR (4 downto 0)
     );
 end led_controller;
 
 architecture Behavioral of led_controller is
-    signal current_index : UNSIGNED(3 downto 0) := (others => '0');
+    signal current_index : UNSIGNED(4 downto 0) := (others => '0');
     signal counter       : UNSIGNED(31 downto 0) := (others => '0');
-    constant MAX_INDEX   : UNSIGNED(3 downto 0) := "1111"; -- 16 combinations
+    constant MAX_INDEX   : UNSIGNED(4 downto 0) := "10000"; -- 17 combinations
     constant DELAY       : UNSIGNED(31 downto 0) := X"029020C0"; -- 43,000,000 for 100 MHz
     signal running       : STD_LOGIC := '1';
 begin
