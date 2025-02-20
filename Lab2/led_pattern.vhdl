@@ -4,7 +4,7 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity led_pattern is
     Port (
-        index   : in  STD_LOGIC_VECTOR(3 downto 0);
+        index   : in  STD_LOGIC_VECTOR(4 downto 0);
         leds    : out STD_LOGIC_VECTOR(15 downto 0)
     );
 end led_pattern;
