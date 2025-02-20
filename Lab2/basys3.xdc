@@ -3,11 +3,11 @@ set_property PACKAGE_PIN W5 [get_ports clk]
 set_property IOSTANDARD LVCMOS33 [get_ports clk]
 
 ## Reset button (Button Left)
-set_property PACKAGE_PIN T18 [get_ports reset]
+set_property PACKAGE_PIN W19 [get_ports reset]
 set_property IOSTANDARD LVCMOS33 [get_ports reset]
 
 ## Pause button (Button Up)
-set_property PACKAGE_PIN W19 [get_ports pause]
+set_property PACKAGE_PIN T18 [get_ports pause]
 set_property IOSTANDARD LVCMOS33 [get_ports pause]
 
 # Output signal
