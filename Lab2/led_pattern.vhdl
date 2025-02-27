@@ -5,37 +5,42 @@ use IEEE.NUMERIC_STD.ALL;
 entity led_pattern is
     Port (
         index   : in  STD_LOGIC_VECTOR(4 downto 0);
+        sw0     : in  STD_LOGIC;  -- New input for switch SW0
         leds    : out STD_LOGIC_VECTOR(15 downto 0)
     );
 end led_pattern;
 
 architecture Behavioral of led_pattern is
 begin
-    process(index)
+    process(index, sw0)
         variable pattern : STD_LOGIC_VECTOR(15 downto 0);
         variable idx_int : integer;
+        variable skip    : integer;  -- Number of LEDs to skip
     begin
         idx_int := to_integer(unsigned(index));
         pattern := (others => '0');
 
-        -- Limit the range of idx_int
-        if idx_int > 16 then
-            idx_int := 16;  -- Set index to 16 if it exceeds 16
+        -- Determine the number of LEDs to skip based on sw0
+        if sw0 = '1' then
+            skip := 2;  -- Skip 2 LEDs
+        else
+            skip := 1;  -- Skip 1 LED
         end if;
 
+        -- Generate the LED pattern
         if idx_int = 0 then
-            pattern := (others => '0');  -- Keep all bits '0' if index is 0
+            pattern := (others => '0');  -- All LEDs off
         else
-            for i in 0 to 15 loop  -- Fixed range loop
+            for i in 0 to 15 loop
                 if i < idx_int then
-                    if ((idx_int mod 2 = 0) and (i mod 2 = 1)) or
-                       ((idx_int mod 2 = 1) and (i mod 2 = 0)) then
-                        pattern(i) := '1';  -- Set bit to '1' according to condition
+                    if ((idx_int mod 2 = 0) and (i mod skip = 1)) or
+                       ((idx_int mod 2 = 1) and (i mod skip = 0)) then
+                        pattern(i) := '1';  -- Turn on the LED
                     end if;
                 end if;
             end loop;
         end if;
 
-        leds <= pattern;  -- Assign the result to the output signal leds
+        leds <= pattern;  -- Assign the pattern to the output
     end process;
 end Behavioral;

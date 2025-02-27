@@ -7,6 +7,7 @@ entity top_module is
         clk         : in  STD_LOGIC;
         reset       : in  STD_LOGIC;
         pause       : in  STD_LOGIC;
+        sw0         : in  STD_LOGIC;  -- New input for switch SW0
         led_output  : out STD_LOGIC_VECTOR(15 downto 0)
     );
 end top_module;
@@ -25,6 +26,7 @@ begin
     U2: entity work.led_pattern
         Port map (
             index => index_signal,
+            sw0   => sw0,  -- Pass sw0 to led_pattern
             leds => led_output
         );
 end Behavioral;
