@@ -1,5 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "D:/FPGA/project_1/project_1.sim/sim_1/impl/func/xsim/SIM_VOLK_func_impl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module VOLK
-INFO: [VRFC 10-311] analyzing module glbl
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "D:/FPGA/project_1/project_1.srcs/sim_1/new/SIM_VOLK.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module SIM_VOLK

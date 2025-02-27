@@ -1,9 +1,0 @@
-# compile verilog/system verilog design source files
-verilog xil_defaultlib  \
-"SIM_VOLK_time_impl.v" \
-
-sv xil_defaultlib  \
-"../../../../../project_1.srcs/sim_1/new/SIM_VOLK.sv" \
-
-# Do not sort compile order
-nosort
