@@ -33,9 +33,8 @@ begin
         else
             for i in 0 to 15 loop
                 if i < idx_int then
-                    if ((idx_int mod 2 = 0) and (i mod skip = 1)) or
-                       ((idx_int mod 2 = 1) and (i mod skip = 0)) then
-                        pattern(i) := '1';  -- Turn on the LED
+                    if (i mod (skip + 1) = 0) then
+                        pattern(i) := '1'; 
                     end if;
                 end if;
             end loop;
